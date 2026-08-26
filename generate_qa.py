@@ -31,18 +31,34 @@ Answers:
 - Provide step-by-step guidance where appropriate
 - Mention when to call a licensed professional (especially for structural, electrical, or gas work)
 - Include tool and material recommendations where helpful
-- Keep answers between 100–250 words — detailed but not overwhelming
-
-Tags:
-- 3 to 6 per pair
-- Use lowercase, hyphenated strings (e.g., "water-damage", "circuit-breaker")
-- Cover the specific action, the component involved, and the skill level implied
+- Keep answers between 750–1000 words — thorough and detailed
 
 ════════════════════════════════════════
 TOPIC REFERENCE GUIDE
 ════════════════════════════════════════
 
-PLUMBING
+APPLIANCE REPAIR
+Common questions and subtopics:
+• Refrigerator not cooling: condenser coil cleaning, door seal/gasket checks, thermostat settings
+• Dishwasher not draining or not cleaning well: filter cleaning, spray arm clogs, drain hose kinks
+• Washing machine not spinning or draining: lid/door switch, drive belt, pump filter
+• Dryer not heating or taking too long: lint trap, vent hose blockages, thermal fuse
+• Garbage disposal jammed or humming: reset button, clearing with an Allen wrench
+• Oven or stove heating element and igniter troubleshooting
+• Microwave not heating: door switch and interlock checks (leave magnetron/capacitor work to a pro)
+• Ice maker not producing ice: water line kinks, fill valve issues
+• Range hood fan not working: motor cleaning, filter replacement
+• Refrigerator and under-sink water filter replacement
+• Reading and looking up appliance error codes
+• Rule-of-thumb guidance for repair vs. replace decisions
+
+Safety notes for appliance repair:
+- Always unplug the appliance (or shut off its dedicated circuit) before opening any panel
+- Never bypass safety interlocks like washer lid switches or dryer door switches
+- Gas appliances: never attempt gas line or gas valve work yourself — call a licensed technician
+- Microwaves store dangerous high voltage in the capacitor even when unplugged — leave that repair to a pro
+
+PLUMBING REPAIR
 Common questions and subtopics:
 • Fixing dripping or running faucets (worn washers, cartridges, O-rings)
 • Unclogging sinks, tubs, showers, and toilets (plunger, snake, enzyme cleaners)
@@ -63,7 +79,7 @@ Safety notes for plumbing:
 - Use thread seal tape (Teflon) on threaded fittings, not on compression fittings
 - Know the location of your home's main water shutoff
 
-ELECTRICAL
+ELECTRICAL REPAIR
 Common questions and subtopics:
 • Replacing standard outlets (duplex receptacles) and light switches
 • GFCI outlet installation and testing (bathrooms, kitchens, garages, outdoors)
@@ -85,51 +101,49 @@ Safety notes for electrical:
 - Emphasize when to call a licensed electrician: panel work, new circuits, aluminum wiring, knob-and-tube
 - GFCI protection is required within 6 feet of water sources
 
-CARPENTRY
+HVAC MAINTENANCE
+Common questions and subtopics:
+• Changing or cleaning air filters: recommended frequency, MERV rating tradeoffs
+• Thermostat troubleshooting: dead batteries, miswiring, smart thermostat compatibility
+• AC not cooling: dirty condenser/evaporator coils vs. low refrigerant (refrigerant is pro-only)
+• Furnace not igniting: pilot light relighting, ignitor and flame sensor cleaning
+• Clearing a clogged condensate drain line (wet/dry vacuum, vinegar flush)
+• Ductwork basics: sealing leaks, adding insulation, balancing airflow between rooms
+• Cleaning and adjusting supply/return vents and registers
+• Seasonal maintenance checklists: spring AC startup, fall furnace startup
+• Diagnosing strange HVAC noises (banging, squealing, clicking) by likely cause
+• Programming a thermostat schedule for efficiency and comfort
+• When to call an HVAC technician vs. DIY (refrigerant, gas lines, high-voltage components)
+• Humidifier and dehumidifier maintenance as part of the HVAC system
+
+Safety notes for HVAC maintenance:
+- Never handle refrigerant lines yourself — EPA Section 608 certification is legally required
+- Turn off power at the breaker AND the furnace/AC service disconnect before opening any panel
+- If you smell gas near a furnace, leave the house and call the gas company — do not attempt DIY diagnosis
+- Verify carbon monoxide detectors are working as part of routine furnace maintenance
+
+GENERAL HOME REPAIR
 Common questions and subtopics:
 • Fixing squeaky floors: locating joists, screw-from-above vs. screw-from-below methods
 • Stopping squeaky doors: hinge adjustment, strike plate realignment, planing
 • Repairing or replacing interior door hinges, knobs, and deadbolts
-• Installing or adjusting door threshold and weather stripping
+• Patching nail holes through large drywall holes: spackling, mesh patches, backer board
+• Taping and mudding drywall seams; feathering joint compound for a smooth finish
+• Matching existing wall texture: orange peel, knockdown, skip trowel, popcorn
+• Interior/exterior paint prep, sheen selection, and fixing common paint problems
 • Patching or replacing damaged baseboards and door/window casing
-• Sticking drawers and cabinet door adjustments
 • Deck maintenance: board replacement, screw popping, post and joist inspection
 • Wood rot identification and treatment vs. replacement
-• Building basic floating shelves with proper wall anchoring
-• Cutting and installing crown molding basics
+• Caulking around windows, doors, and tubs to stop drafts and leaks
+• Weatherstripping and draft sealing for doors and windows
+• Building basic floating shelves with proper wall anchoring or stud placement
 • Stair tread repair and tightening loose balusters
-• Wood filler vs. wood epoxy for rot and damage repair
 
-PAINTING
-Common questions and subtopics:
-• Proper surface prep: cleaning, sanding, filling holes, priming
-• Choosing the right sheen: flat/matte, eggshell, satin, semi-gloss, gloss
-• Interior vs. exterior paint differences and when each is required
-• Cutting in along ceilings and trim without tape vs. with painter's tape
-• Rolling technique: W or M pattern, proper nap thickness for surface texture
-• Brush selection: natural bristle (oil-based) vs. synthetic (latex/water-based)
-• Painting over dark colors or stains: proper primer selection
-• Cleaning and storing brushes and rollers between coats and after finishing
-• Color matching: using existing paint chips, spectrophotometer services
-• Fixing common paint problems: drips, brush marks, lap marks, roller texture
-• Painting trim and doors: order of operations, preventing sticking
-• Spray painting basics: thinning, distance, overlap patterns
-• Lead paint precautions for pre-1978 homes
-
-DRYWALL
-Common questions and subtopics:
-• Patching nail holes and small dings with spackling compound
-• Patching medium holes (1–4 inches) with California patch or mesh patch kits
-• Patching large holes (4+ inches) with backer board or clip method
-• Feathering joint compound for smooth, invisible repairs
-• Taping seams: paper tape vs. fiberglass mesh tape (when to use each)
-• Applying multiple thin coats of joint compound (mud) vs. one thick coat
-• Sanding drywall: grits, tools, minimizing dust
-• Priming repaired drywall before painting (critical step many skip)
-• Matching existing wall texture: orange peel, knockdown, skip trowel, popcorn
-• Water damage: drying thoroughly before patching, treating for mold
-• Hanging new drywall: measuring, scoring and snapping, fastener placement
-• Corner bead installation for inside and outside corners
+Safety notes for general home repair:
+- Use eye, ear, and respiratory protection for sanding, cutting, and demolition work
+- Test for lead paint in homes built before 1978 before sanding or scraping painted surfaces
+- Use a stud finder before drilling or driving fasteners into walls to avoid hidden wiring/plumbing
+- Know the weight limits of wall anchors and use a stud or blocking for anything heavy
 
 ════════════════════════════════════════
 DIFFICULTY LEVEL DEFINITIONS
@@ -166,12 +180,19 @@ Each element must contain exactly these fields:
 
 {
   "id": "<uuid-v4-string>",
-  "topic": "<one of: plumbing | electrical | carpentry | painting | drywall>",
-  "difficulty": "<one of: easy | medium | hard>",
+  "topic": "<one of: appliance | plumbing | electrical | hvac | general>",
   "question": "<the question text>",
-  "answer": "<the detailed answer, 100-250 words>",
-  "tags": ["<tag1>", "<tag2>", "<tag3>"]
+  "answer": "<the detailed answer, 750-1000 words>",
+  "equipment_problem": "<problem being addressed, e.g., 'leaking faucet', 'dryer not heating'>",
+  "tools_required": ["<tool 1>"],
+  "steps": ["<step 1>", "<step 2>", "<step 3>"],
+  "safety_info": "<relevant safety information, warnings, or precautions>",
+  "tips": ["<tip 1>", "<tip 2>"]
 }
+
+Field requirements:
+- tools_required: at least 1 item
+- steps: at least 3 items
 
 Do not include any text before or after the JSON array."""
 
@@ -187,7 +208,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--topics",
-        default="plumbing,electrical,carpentry,painting,drywall",
+        default="appliance,plumbing,electrical,hvac,general",
         help="Comma-separated list of topics to include",
     )
     parser.add_argument(
@@ -227,6 +248,20 @@ def build_user_prompt(topics: list[str], difficulty: str, batch_size: int, offse
     )
 
 
+def validate_pair(pair: dict) -> None:
+    tools = pair.get("tools_required")
+    if not isinstance(tools, list) or len(tools) < 1:
+        raise ValueError(
+            f"'tools_required' must contain at least 1 item (id={pair.get('id')})"
+        )
+
+    steps = pair.get("steps")
+    if not isinstance(steps, list) or len(steps) < 3:
+        raise ValueError(
+            f"'steps' must contain at least 3 items (id={pair.get('id')})"
+        )
+
+
 def generate_batch(
     client: anthropic.Anthropic,
     topics: list[str],
@@ -238,7 +273,7 @@ def generate_batch(
 
     response = client.messages.create(
         model="claude-sonnet-4-6",
-        max_tokens=4096,
+        max_tokens=16000,
         system=[
             {
                 "type": "text",
@@ -265,6 +300,9 @@ def generate_batch(
         if not isinstance(pair.get("id"), str) or len(pair["id"]) < 8:
             pair["id"] = str(uuid.uuid4())
 
+    for pair in pairs:
+        validate_pair(pair)
+
     return pairs, response.usage
 
 
@@ -274,12 +312,20 @@ def save_json(pairs: list[dict], path: str) -> None:
 
 
 def save_csv(pairs: list[dict], path: str) -> None:
-    fieldnames = ["id", "topic", "difficulty", "question", "answer", "tags"]
+    fieldnames = [
+        "id", "topic", "question", "answer", "equipment_problem",
+        "tools_required", "steps", "safety_info", "tips",
+    ]
     with open(path, "w", newline="", encoding="utf-8") as fh:
         writer = csv.DictWriter(fh, fieldnames=fieldnames)
         writer.writeheader()
         for pair in pairs:
-            row = {**pair, "tags": "|".join(pair.get("tags", []))}
+            row = {
+                **pair,
+                "tools_required": "|".join(pair.get("tools_required", [])),
+                "steps": "|".join(pair.get("steps", [])),
+                "tips": "|".join(pair.get("tips", [])),
+            }
             writer.writerow(row)
 
 
@@ -320,6 +366,9 @@ def main() -> None:
             pairs, usage = generate_batch(client, topics, args.difficulty, this_batch, len(all_pairs))
         except json.JSONDecodeError as exc:
             print(f"FAILED — JSON parse error: {exc}", file=sys.stderr)
+            sys.exit(1)
+        except ValueError as exc:
+            print(f"FAILED — validation error: {exc}", file=sys.stderr)
             sys.exit(1)
         except anthropic.APIError as exc:
             print(f"FAILED — API error: {exc}", file=sys.stderr)
