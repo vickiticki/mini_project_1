@@ -216,11 +216,11 @@ def parse_args() -> argparse.Namespace:
         help="Difficulty level for generated pairs",
     )
     parser.add_argument(
-        "--output", default="qa_data.json",
+        "--output", default="qa_data.jsonl",
         help="Output file path",
     )
     parser.add_argument(
-        "--format", choices=["json", "csv"], default="json", dest="output_format",
+        "--format", choices=["jsonl", "csv"], default="jsonl", dest="output_format",
         help="Output file format",
     )
     return parser.parse_args()
@@ -300,20 +300,25 @@ def generate_batch(
         if not isinstance(pair.get("id"), str) or len(pair["id"]) < 8:
             pair["id"] = str(uuid.uuid4())
 
+    # Assign a global, gapless generation sequence number (1-based)
+    for i, pair in enumerate(pairs):
+        pairs[i] = {"id_number": offset + i + 1, **pair}
+
     for pair in pairs:
         validate_pair(pair)
 
     return pairs, response.usage
 
 
-def save_json(pairs: list[dict], path: str) -> None:
+def save_jsonl(pairs: list[dict], path: str) -> None:
     with open(path, "w", encoding="utf-8") as fh:
-        json.dump(pairs, fh, indent=2, ensure_ascii=False)
+        for pair in pairs:
+            fh.write(json.dumps(pair, ensure_ascii=False) + "\n")
 
 
 def save_csv(pairs: list[dict], path: str) -> None:
     fieldnames = [
-        "id", "topic", "question", "answer", "equipment_problem",
+        "id_number", "id", "topic", "question", "answer", "equipment_problem",
         "tools_required", "steps", "safety_info", "tips",
     ]
     with open(path, "w", newline="", encoding="utf-8") as fh:
@@ -340,10 +345,22 @@ def main() -> None:
     client = anthropic.Anthropic()
 
     batch_size = 5
-    total_batches = (args.count + batch_size - 1) // batch_size
+
+    # Split the total evenly across topics so each category gets its fair
+    # share, rather than relying on the model to self-balance a mixed batch.
+    # Any remainder (count not divisible by len(topics)) goes to the first
+    # topics, one extra each.
+    base, remainder = divmod(args.count, len(topics))
+    topic_counts = [
+        base + (1 if i < remainder else 0) for i in range(len(topics))
+    ]
+
+    total_batches = sum(
+        (n + batch_size - 1) // batch_size for n in topic_counts
+    )
 
     print(f"Generating {args.count} Q&A pairs in {total_batches} batch(es)")
-    print(f"  Topics    : {', '.join(topics)}")
+    print(f"  Topics    : {', '.join(f'{t} ({n})' for t, n in zip(topics, topic_counts))}")
     print(f"  Difficulty: {args.difficulty}")
     print(f"  Output    : {args.output} ({args.output_format})")
     print()
@@ -351,47 +368,60 @@ def main() -> None:
     all_pairs: list[dict] = []
     total_cached = 0
     total_uncached = 0
+    batch_num = 0
 
-    for batch_num in range(total_batches):
-        remaining = args.count - len(all_pairs)
-        this_batch = min(batch_size, remaining)
+    for topic, topic_count in zip(topics, topic_counts):
+        generated_for_topic = 0
 
-        print(
-            f"  Batch {batch_num + 1}/{total_batches} ({this_batch} pairs)...",
-            end=" ",
-            flush=True,
-        )
+        while generated_for_topic < topic_count:
+            batch_num += 1
+            this_batch = min(batch_size, topic_count - generated_for_topic)
 
-        try:
-            pairs, usage = generate_batch(client, topics, args.difficulty, this_batch, len(all_pairs))
-        except json.JSONDecodeError as exc:
-            print(f"FAILED — JSON parse error: {exc}", file=sys.stderr)
-            sys.exit(1)
-        except ValueError as exc:
-            print(f"FAILED — validation error: {exc}", file=sys.stderr)
-            sys.exit(1)
-        except anthropic.APIError as exc:
-            print(f"FAILED — API error: {exc}", file=sys.stderr)
-            sys.exit(1)
+            print(
+                f"  Batch {batch_num}/{total_batches} — {topic} ({this_batch} pairs)...",
+                end=" ",
+                flush=True,
+            )
 
-        all_pairs.extend(pairs)
-        cached = getattr(usage, "cache_read_input_tokens", 0) or 0
-        created = getattr(usage, "cache_creation_input_tokens", 0) or 0
-        total_cached += cached
-        total_uncached += getattr(usage, "input_tokens", 0) or 0
+            try:
+                pairs, usage = generate_batch(
+                    client, [topic], args.difficulty, this_batch, len(all_pairs)
+                )
+            except json.JSONDecodeError as exc:
+                print(f"FAILED — JSON parse error: {exc}", file=sys.stderr)
+                sys.exit(1)
+            except ValueError as exc:
+                print(f"FAILED — validation error: {exc}", file=sys.stderr)
+                sys.exit(1)
+            except anthropic.APIError as exc:
+                print(f"FAILED — API error: {exc}", file=sys.stderr)
+                sys.exit(1)
 
-        cache_note = ""
-        if created:
-            cache_note = " [cache written]"
-        elif cached:
-            cache_note = f" [cache hit: {cached} tokens]"
+            # Guarantee the topic matches the batch we asked for, regardless
+            # of what the model put in the field.
+            for pair in pairs:
+                pair["topic"] = topic
 
-        print(f"done  (total: {len(all_pairs)}){cache_note}")
+            all_pairs.extend(pairs)
+            generated_for_topic += len(pairs)
+
+            cached = getattr(usage, "cache_read_input_tokens", 0) or 0
+            created = getattr(usage, "cache_creation_input_tokens", 0) or 0
+            total_cached += cached
+            total_uncached += getattr(usage, "input_tokens", 0) or 0
+
+            cache_note = ""
+            if created:
+                cache_note = " [cache written]"
+            elif cached:
+                cache_note = f" [cache hit: {cached} tokens]"
+
+            print(f"done  (total: {len(all_pairs)}){cache_note}")
 
     print()
 
-    if args.output_format == "json":
-        save_json(all_pairs, args.output)
+    if args.output_format == "jsonl":
+        save_jsonl(all_pairs, args.output)
     else:
         save_csv(all_pairs, args.output)
 

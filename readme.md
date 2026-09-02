@@ -1,2 +1,2 @@
-This project focuses on generating synthetic data and training an ai agent to judge the data.s
+This project focuses on generating synthetic data and training an ai agent to judge the data.
 generate_qa.py generates question/answer pairs about home repair
