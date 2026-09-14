@@ -1,3 +1,4 @@
+import argparse
 import json
 
 import anthropic
@@ -48,13 +49,13 @@ Return judgment in JSON format with the following format:
     "scope_appropriateness": 1,
     "context_clarity": 1,
     "tip_usefulness": 1,
-    "overall_judgment": true
+    "overall_pass": true
 }
 
 Field requirements:
 - answer_completeness, safety_specificity, tool_realism, scope_appropriateness, context_clarity,
   tip_usefulness: integer, 1 if the criterion is met, 0 if not
-- overall_judgment: boolean, true if OVERALL_PASS, false if OVERALL_FAIL
+- overall_pass: boolean, true if OVERALL_PASS, false if OVERALL_FAIL
 
 Return ONLY the JSON object above. No markdown fences, no preamble, no reasoning or explanation
 outside the JSON."""
@@ -106,17 +107,45 @@ def save_jsonl(results_df: pd.DataFrame, path: str = "judge_results.jsonl") -> N
             fh.write(json.dumps(record, ensure_ascii=False) + "\n")
 
 
-if __name__ == "__main__":
-    qa_df = load_qa_data()
-    print(f"Loaded {len(qa_df)} rows from qa_data.jsonl")
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Judge generated DIY home repair Q&A pairs using the Claude API",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
+    parser.add_argument(
+        "--input", default="qa_data.jsonl",
+        help="Path to the QA data JSONL file to judge",
+    )
+    parser.add_argument(
+        "--count", type=int, default=None,
+        help="Number of rows to judge (default: all rows)",
+    )
+    parser.add_argument(
+        "--output", default="judge_results.jsonl",
+        help="Output file path for judgments",
+    )
+    return parser.parse_args()
+
+
+def main() -> None:
+    args = parse_args()
+
+    qa_df = load_qa_data(args.input)
+    print(f"Loaded {len(qa_df)} rows from {args.input}")
     print(qa_df["topic"].value_counts())
     print()
 
+    if args.count is not None:
+        qa_df = qa_df.head(args.count)
+
     client = anthropic.Anthropic()
-    sample_df = qa_df.head(3)
-    print(f"Judging {len(sample_df)} sample row(s)...")
-    results_df = judge_all(client, sample_df)
+    print(f"Judging {len(qa_df)} row(s)...")
+    results_df = judge_all(client, qa_df)
     print(results_df)
 
-    save_jsonl(results_df)
-    print(f"\nSaved {len(results_df)} judgments → judge_results.jsonl")
+    save_jsonl(results_df, args.output)
+    print(f"\nSaved {len(results_df)} judgments → {args.output}")
+
+
+if __name__ == "__main__":
+    main()
